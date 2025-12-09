@@ -1,0 +1,9 @@
+{
+  "name": "barberwebsiteapp",
+  "version": "1.0.0",
+  "description": "barber shop webapp",
+  "main": "index.js",
+  "repository": "https://github.com/samuelajalode/barberwebsiteapp.git",
+  "author": "samuelajalode <113217825+samuelajalode@users.noreply.github.com>",
+  "license": "MIT"
+}
