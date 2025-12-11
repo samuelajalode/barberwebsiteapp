@@ -179,7 +179,7 @@
           <h1 class="h1 hero-title">Barbers & Hair Cutting</h1>
 
           <p class="hero-text">
-            Get ready to elevate your grooming game @theEssenceofJewel, premier barbing destination! Our expert barbers deliver precision cuts, sleek styles, and unbeatable vibes. From classic fades to fresh designs, we've got you covered. Book your spot now and experience the ultimate grooming experience! 📅💈 #BarbingGoals #EssenceofJewel
+            Get ready to elevate your grooming game<a href="index.html">@theEssenceofJewel</a>, premier barbing destination! Our expert barbers deliver precision cuts, sleek styles, and unbeatable vibes. From classic fades to fresh designs, we've got you covered. Book your spot now and experience the ultimate grooming experience! 📅💈 #BarbingGoals #EssenceofJewel
           </p>
 
           <a href="#services" class="btn has-before">
@@ -990,9 +990,18 @@ Our skilled barbers will work with you to create a look that reflects your perso
 
       <div class="footer-bottom">
         <p class="copyright">
-          &copy; 2025 <a href="index.html" class="copyright-link">EssenceOfJewel</a>. All Rights Reserved.
-        </p>
+          <span id="current-year"></span>
+        </p>&copy;
+          <a href="index.html" class="copyright-link">EssenceOfJewel</a>. All Rights Reserved.
+        
       </div>
+
+      <script>
+        (function() {
+          const currentYearElement = document.getElementById('current-year');
+          currentYearElement.innerText = new Date().getFullYear();
+        })();
+      </script>
 
     </div>
   </footer>
