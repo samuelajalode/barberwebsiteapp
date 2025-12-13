@@ -69,6 +69,7 @@
   <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
   <p class="item-title">Opening Hour :</p>
   <p class="item-text" id="opening-hours"></p>
+  <span id="status-light" style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-left: 5px;"></span>
 </li>
 
 <script>
@@ -79,8 +80,8 @@
     Tuesday: { open: 8, close: 21 },
     Wednesday: { open: 8, close: 21 },
     Thursday: { open: 8, close: 21 },
-    Friday: { open: 8, close: 24 },
-    Saturday: { open: 8, close: 24 },
+    Friday: { open: 8, close: 21 },
+    Saturday: { open: 8, close: 21 },
   };
 
   // Get current day and time
@@ -90,6 +91,7 @@
 
   // Get opening hours element
   const openingHoursElement = document.getElementById('opening-hours');
+  const statusLight = document.getElementById('status-light');
 
   // Function to update opening hours
   function updateOpeningHours() {
@@ -101,7 +103,33 @@
 
     // Update opening hours element
     openingHoursElement.innerText = isOpen ? `Open now: ${hoursText}` : `Closed. Opens tomorrow at ${hoursText}`;
+
+    // Update status light
+    if (isOpen) {
+      statusLight.style.background = 'green';
+      statusLight.style.animation = 'blink 1s infinite';
+    } else {
+      statusLight.style.background = 'red';
+      statusLight.style.animation = 'none';
+    }
   }
+
+  // Add CSS animation for blinking effect
+  const style = document.createElement('style');
+  style.innerHTML = `
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 
   // Update opening hours every minute
   setInterval(() => {
