@@ -9,7 +9,7 @@
   <!-- 
     - primary meta tags
   -->
-  <title>EssenceOfJewel - Barbers & Hair Cutting</title>
+  <title>EssenceOfJewel - Barbers & Hair Styling</title>
   <meta name="title" content="EssenceOfJewel - Barbers & Hair Cutting">
   <meta name="description" content="This is a barber html template made by @yflmsvg">
 
@@ -66,12 +66,51 @@
           </li>
 
           <li class="header-top-item">
-            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+  <p class="item-title">Opening Hour :</p>
+  <p class="item-text" id="opening-hours"></p>
+</li>
 
-            <p class="item-title">Opening Hour :</p>
+<script>
+  // Define opening and closing hours
+  const openingHours = {
+    Sunday: { open: 8, close: 21 },
+    Monday: { open: 8, close: 21 },
+    Tuesday: { open: 8, close: 21 },
+    Wednesday: { open: 8, close: 21 },
+    Thursday: { open: 8, close: 21 },
+    Friday: { open: 8, close: 24 },
+    Saturday: { open: 8, close: 24 },
+  };
 
-            <p class="item-text">Sunday - Friday, 08 am - 09 pm</p>
-          </li>
+  // Get current day and time
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const currentDay = days[new Date().getDay()];
+  const currentTime = new Date().getHours();
+
+  // Get opening hours element
+  const openingHoursElement = document.getElementById('opening-hours');
+
+  // Function to update opening hours
+  function updateOpeningHours() {
+    const todayHours = openingHours[currentDay];
+    const isOpen = currentTime >= todayHours.open && currentTime < todayHours.close;
+
+    // Format opening hours text
+    const hoursText = `${currentDay}, ${todayHours.open.toString().padStart(2, '0')}:00 - ${todayHours.close.toString().padStart(2, '0')}:00`;
+
+    // Update opening hours element
+    openingHoursElement.innerText = isOpen ? `Open now: ${hoursText}` : `Closed. Opens tomorrow at ${hoursText}`;
+  }
+
+  // Update opening hours every minute
+  setInterval(() => {
+    updateOpeningHours();
+  }, 60000);
+
+  // Initial update
+  updateOpeningHours();
+</script>
 
           <li>
             <ul class="social-list">
@@ -371,7 +410,7 @@ Our skilled barbers will work with you to create a look that reflects your perso
           <h2 class="h2 section-title text-center">Awesome Pricing Plan</h2>
 
           <p class="section-text text-center">
-            Sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt labore dolore magna aliqua suspendisse
+            Get premium services at EssenceOfJewel Barbing Saloon, book now and sparkle later
           </p>
 
           <div class="pricing-tab-container">
@@ -618,7 +657,7 @@ Our skilled barbers will work with you to create a look that reflects your perso
               <h2 class="h2 section-title">Latest Photo Gallery</h2>
 
               <p class="section-text">
-                Get a glimpse of the freshest cuts, boldest colors, and most epic styles from our talented team of stylists! Our latest photo gallery is live, showcasing the best of the best from our barbing saloon. From classic fades to trendy designs, we're always pushing the boundaries of grooming excellence. Swipe through and get inspired for your next appointment! 📚 Book your spot now and become part of our style story! 
+                Get a glimpse of the freshest styles, boldest colors, and most epic styles from our talented team of stylists! Our latest photo gallery is live, showcasing the best of the best from our barbing saloon. From classic fades to trendy designs, we're always pushing the boundaries of grooming excellence. Swipe through and get inspired for your next appointment! 📚 Book your spot now and become part of our style story! 
               </p>
             </div>
 
