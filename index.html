@@ -102,14 +102,14 @@
     const hoursText = `${currentDay}, ${todayHours.open.toString().padStart(2, '0')}:00 - ${todayHours.close.toString().padStart(2, '0')}:00`;
 
     // Update opening hours element
-    openingHoursElement.innerText = isOpen ? `Open now: ${hoursText}` : `Closed. Opens tomorrow at ${hoursText}`;
+    openingHoursElement.innerText = isOpen ? `Open now: ${hoursText}` : `Closed. Opens today at ${hoursText}`;
 
     // Update status light
     if (isOpen) {
       statusLight.style.background = 'green';
       statusLight.style.animation = 'blink 1s infinite';
     } else {
-      statusLight.style.background = 'red';
+      statusLight.style.background = 'cyan';
       statusLight.style.animation = 'none';
     }
   }
@@ -1038,10 +1038,54 @@ Our skilled barbers will work with you to create a look that reflects your perso
             </li>
 
             <li class="footer-list-item">
-              <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+  <span class="contact-link" id="work-day-update"></span>
+  <button id="work-status-button" class="work-status-button"></button>
+</li>
 
-              <span class="contact-link">Sun - Friday, 08 am - 09 pm</span>
-            </li>
+<!-- Add this to your JavaScript file -->
+<script>
+  const workDayUpdateElement = document.getElementById('work-day-update');
+  const workStatusButton = document.getElementById('work-status-button');
+
+  function updateWorkDay() {
+    const currentTime = new Date();
+    const currentDay = currentTime.toLocaleString('en-US', { weekday: 'long' });
+    const currentHour = currentTime.getHours();
+
+    // Update work day and time
+    const isWorkingHour = (currentDay !== 'Saturday' && currentDay !== 'Sunday') && (currentHour >= 8 && currentHour < 21);
+    const workDayText = `${currentDay}, 08 am - 09 pm`;
+    workDayUpdateElement.textContent = workDayText;
+
+    // Update work status button
+    if (isWorkingHour) {
+      workStatusButton.textContent = 'Open now';
+      workStatusButton.style.background = 'orange';
+    } else {
+      workStatusButton.textContent = 'Closed';
+      workStatusButton.style.background = 'gray';
+    }
+  }
+
+  // Update work day and status every minute
+  setInterval(updateWorkDay, 60000);
+  updateWorkDay(); // Initial update
+</script>
+
+<!-- Add this to your CSS file -->
+<style>
+  .work-status-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 12px;
+  }
+</style>
+
+            
 
             <li class="footer-list-item">
               <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>

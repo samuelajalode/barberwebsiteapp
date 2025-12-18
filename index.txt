@@ -1,7 +1,7 @@
-<li class="header-top-item">
-            <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+update the footer list item to show like day update and an orange work-status button added
 
-            <p class="item-title">Opening Hour :</p>
+<li class="footer-list-item">
+              <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
 
-            <p class="item-text">Sunday - Friday, 08 am - 09 pm</p>
-          </li>
+              <span class="contact-link">Sun - Friday, 08 am - 09 pm</span>
+            </li>
