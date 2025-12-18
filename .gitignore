@@ -1,0 +1,11 @@
+solution.txt
+*.log
+temp/
+.DS_Store
+style-guid.md
+node_modules/
+.env
+dist/
+.vscode/
+.idea/
+coverage/
