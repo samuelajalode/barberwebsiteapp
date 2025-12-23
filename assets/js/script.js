@@ -88,3 +88,36 @@ const filter = function () {
 }
 
 addEventOnElem(filterBtns, "click", filter);
+
+
+// Create snowflakes
+function createSnowflake() {
+  const snowflake = document.createElement('div');
+  snowflake.classList.add('snowflake');
+  snowflake.style.left = Math.random() * 100 + 'vw';
+  snowflake.style.width = Math.random() * 5 + 2.5 + 'px'; // random size snowballs between 5-15px
+  snowflake.style.height = snowflake.style.width;
+  snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // between 2-5 seconds
+  snowflake.style.opacity = Math.random() * 0.5 + 0.5; // between 0.5-1
+  document.querySelector('.snow').appendChild(snowflake);
+
+  // Remove snowflake after animation ends
+  setTimeout(() => {
+    snowflake.remove();
+  }, 5000);
+}
+
+// Create snow effect
+function createSnow() {
+  const snowContainer = document.createElement('div');
+  snowContainer.classList.add('snow');
+  document.body.appendChild(snowContainer);
+
+  // Create snowflakes every 100ms
+  setInterval(() => {
+    createSnowflake();
+  }, 100);
+}
+
+// Call the function to start snowing
+createSnow();
